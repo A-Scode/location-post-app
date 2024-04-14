@@ -2,13 +2,15 @@ import { NavigationContainer , DarkTheme as NavigationDarkTheme , DefaultTheme a
 import { StackNavigationOptions, createStackNavigator } from '@react-navigation/stack'
 import React, { useContext } from 'react'
 import screens from './screens';
-import { ToggleButton, adaptNavigationTheme } from 'react-native-paper';
+import { ToggleButton, adaptNavigationTheme, withTheme } from 'react-native-paper';
 import { ThemeContext } from '../context/ThemeContext';
 import { DarkTheme, LightTheme } from '../config/theme';
 import merge from 'deepmerge'
 import ThemeToggle from '../components/ThemeToggle';
+import { PropsWithTheme } from '../config/Types';
+import { StatusBar } from 'react-native';
 
-const NaviagtionScreens = () => {
+const NaviagtionScreens = ({theme}:PropsWithTheme) => {
     const Stack = createStackNavigator();
 
     const themeState = useContext(ThemeContext);
@@ -26,12 +28,16 @@ const NaviagtionScreens = () => {
         headerTitleAlign : "center",
         headerRight : (props)=>(
             <ThemeToggle />
-        )
+        ),
+        headerStyle : {
+            backgroundColor : theme.colors.red,
+        },
       }
 
   return (
     <NavigationContainer
       theme={themeState.isDarkTheme ? CombinedDarkTheme : CombinedDefaultTheme}>
+        <StatusBar backgroundColor={theme.colors.red}barStyle={themeState.isDarkTheme ? 'light-content' : 'dark-content'} />
       <Stack.Navigator screenOptions={screenOptions}>
         <Stack.Group>
           {screens.map(screen => (
@@ -43,4 +49,4 @@ const NaviagtionScreens = () => {
   );
 }
 
-export default NaviagtionScreens
+export default withTheme(NaviagtionScreens)

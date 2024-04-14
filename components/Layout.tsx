@@ -7,14 +7,15 @@ import { Style } from 'react-native-paper/lib/typescript/components/List/utils'
 type propsType = {
     loading? : boolean,
     theme : CustomTheme,
-    children? : ReactNode | undefined
+    children? : ReactNode | undefined,
+    style? : ViewStyle 
 }
 
 
-const Layout = ({loading = false , theme , children} : propsType) => {
+const Layout = ({loading = false , theme , children , style} : propsType) => {
     const styles = createStyles({theme})
   return (
-    <View style= {styles.container}>
+    <View style= {[styles.container , {...style}]}>
         {children}
     </View>
   )

@@ -3,8 +3,10 @@ import { MD3Theme } from "react-native-paper"
 import { Style } from "react-native-paper/lib/typescript/components/List/utils"
 
 
-export interface CustomTheme extends MD3Theme {
-
+export type CustomTheme = MD3Theme & {
+    colors : {
+        red : "#ec3242",
+    }
 }
 export type styleProps = {
     theme? : CustomTheme,

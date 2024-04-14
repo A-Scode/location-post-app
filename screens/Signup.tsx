@@ -8,6 +8,9 @@ const Signup = ({theme}:PropsWithTheme) => {
   return (
     <Layout>
         <Text style={styles.heading} variant='displayMedium' >SignUp</Text>
+        <Layout style={styles.form}>
+
+        </Layout>
     </Layout>
   )
 }
@@ -16,9 +19,12 @@ export default withTheme(Signup)
 
 const createStyles = ({theme}:styleProps):AnyStyle=>({
     heading : {
-        flex : 1,
-        backgroundColor : theme?.colors.background,
-        padding : 5,
+        textAlign : "center",
+        marginTop : 20,
+        color : theme?.colors.onBackground
     },
+    form : {
+
+    }
 })
 

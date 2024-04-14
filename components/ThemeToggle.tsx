@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import { MD3Theme, ToggleButton, withTheme } from 'react-native-paper'
+import { MD3Theme, ToggleButton, TouchableRipple, withTheme } from 'react-native-paper'
 import { ThemeContext, ThemeType } from '../context/ThemeContext';
+import { AnyStyle, styleProps } from '../config/Types';
 
 type propsType = {
     theme : MD3Theme
@@ -8,10 +9,19 @@ type propsType = {
 
 const ThemeToggle = ({theme}:propsType) => {
     const themeState = useContext(ThemeContext);
+    const styles = createStyles({theme})
+
     
   return (
-    <ToggleButton style={{borderRadius : theme.roundness}} icon={themeState.isDarkTheme? "sunny":"dark-mode"} onPress={()=>themeState.toggle()} />
+    <ToggleButton rippleColor={theme.colors.backdrop} style={styles.toggle} icon={themeState.isDarkTheme? "sunny":"dark-mode"} onPress={()=>themeState.toggle()} />
   )
 }
 
 export default withTheme(ThemeToggle)
+
+const createStyles = ({theme}:styleProps):AnyStyle=>({
+    toggle:{
+        borderRadius : 50 ,
+        marginRight : 10,
+    }
+})
