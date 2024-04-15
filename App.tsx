@@ -22,8 +22,9 @@ import PaperProviderConfig from './config/PaperProviderConfig';
 import NaviagtionScreens from './routes';
 import ThemeProvider from './context/ThemeContext';
 import LoginContextProvider from './context/LoginContext';
+import { MMKVLoader } from 'react-native-mmkv-storage';
 
-
+export const storage = new MMKVLoader().withEncryption().initialize()
 
 function App(): React.JSX.Element {
 

@@ -1,4 +1,6 @@
 import { PropsWithChildren, createContext, useCallback, useState } from "react";
+import { useMMKVStorage } from "react-native-mmkv-storage";
+import { storage } from "../App";
 
 export type LoginContextType = {
     name : string,
@@ -13,13 +15,18 @@ export const LoginContext = createContext({
 })
 
 const LoginContextProvider= ({children} : PropsWithChildren)=>{
+
+    const [token , setToken ] = useMMKVStorage<string|null>("token" , storage , null)
+
     const [loginDetails , setLoginDetails] = useState<Omit<LoginContextType , "login">>({
         name : "",
         token : ""
     })
+
     
     const updateLoginDetails = useCallback((details:Omit<LoginContextType , "login">)=>{
         setLoginDetails(details)
+        setToken(details.token)
     } , [loginDetails])
     return(
         <LoginContext.Provider value={{
