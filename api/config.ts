@@ -22,7 +22,7 @@ api.interceptors.request.use((config:InternalAxiosRequestConfig<any>)=>{
         }
         
         if (value){
-            console.warn('token : ' ,value);
+            // console.warn('token : ' ,value);
             newConfig = {...config , headers}
         }
         else newConfig = config;
@@ -31,7 +31,7 @@ api.interceptors.request.use((config:InternalAxiosRequestConfig<any>)=>{
 })
 
 api.interceptors.response.use((response:AxiosResponse)=>{
-    console.log(response.status)
+    console.log("response" , response)
     if (response.status !== 200) {
         Toast.show(response.data.message ,{type : "danger" , animationType:"slide-in"  , duration:5000})
     }

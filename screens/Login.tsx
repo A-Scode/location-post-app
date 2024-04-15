@@ -93,7 +93,6 @@ const Login = ({theme}:PropsWithTheme) => {
           />
           {errors.password && touchedFields.password && (
             <Text style={styles.error} variant="labelLarge">
-              {' '}
               Must be a valid password
             </Text>
           )}

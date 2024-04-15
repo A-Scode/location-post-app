@@ -19,7 +19,8 @@ export const useLogIn = ()=>{
             
         },
         onError : ( error , variables , context)=>{
-            toast.show("Username already taken or error occured" , {type : "danger"})
+            console.log(error.name);
+            toast.show(error.message , {type : "danger"})
         },
     })
 
