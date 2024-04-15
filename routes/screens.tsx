@@ -5,25 +5,26 @@ import { Text } from "react-native-paper";
 import Signup from "../screens/Signup";
 import Login from "../screens/Login";
 import SubmitForm from "../screens/SubmitForm";
+import RetrieveData from "../screens/RetrieveData";
 
 type Screens = RouteConfig<ParamListBase, string, StackNavigationState<ParamListBase>, StackNavigationOptions, StackNavigationEventMap> ;
 
 const screens:Screens[]=[
     {
-        name:"Submit From",
-        children: ()=><SubmitForm/>,
+        name:"SignUp",
+        children: ()=><Signup/>,
     },
     {
         name:"Login",
         children: ()=><Login/>,
     },
     {
-        name:"SignUp",
-        children: ()=><Signup/>,
+        name:"Submit From",
+        children: ()=><SubmitForm/>,
     },
     {
         name:"Retrieve",
-        children: ()=><Text>Retrieve</Text>,
+        children: ()=><RetrieveData />,
     },
 ];
 

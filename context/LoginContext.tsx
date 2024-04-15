@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useCallback, useState } from "react";
+import { PropsWithChildren, createContext, useCallback, useEffect, useState } from "react";
 import { useMMKVStorage } from "react-native-mmkv-storage";
 import { storage } from "../App";
 
@@ -22,6 +22,10 @@ const LoginContextProvider= ({children} : PropsWithChildren)=>{
         name : "",
         token : ""
     })
+
+    useEffect(()=>{
+        console.info(loginDetails)
+    } , [loginDetails])
 
     
     const updateLoginDetails = useCallback((details:Omit<LoginContextType , "login">)=>{

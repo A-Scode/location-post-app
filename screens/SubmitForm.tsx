@@ -36,9 +36,11 @@ const SubmitFrom = ({theme}:PropsWithTheme) => {
       
     },[camera])
 
-    // useEffect(()=>{console.log(camera) }, [camera])
+    
+    
 
-     
+
+
 
 
   return (<>
