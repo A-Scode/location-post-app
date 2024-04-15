@@ -3,17 +3,12 @@ import { Button, IconButton, Surface, Text, TextInput, withTheme } from 'react-n
 import { AnyStyle, PropsWithTheme, styleProps } from '../config/Types';
 import { View } from 'react-native';
 import { useCallback } from 'react';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const SubmitFrom = ({theme}:PropsWithTheme) => {
     const styles = createStyles({theme})
 
     const takePictureInput= useCallback(()=>{
-      launchCamera({
-        cameraType :"back",
-        mediaType :"photo",
-        presentationStyle :"currentContext"
-      })
+      
     },[])
 
   return (
