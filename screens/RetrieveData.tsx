@@ -11,7 +11,7 @@ const RetrieveData = ({theme}:PropsWithTheme) => {
     const query = useRetrieveData();
 
     useEffect(()=>{
-        console.log(query.data?.data)
+        // console.log(query.data?.data)
     },[query.data])
 
   return (

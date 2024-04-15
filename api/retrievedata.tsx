@@ -11,7 +11,6 @@ export const useRetrieveData = ()=>{
         queryKey : ['data'],
         queryFn : ()=>{
             return api.get("/data").then(data=>{
-                console.log("sfsdfd",data)
                 return data
             })
         }

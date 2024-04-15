@@ -38,7 +38,7 @@ const SubmitFrom = ({theme}:PropsWithTheme) => {
     ])
 
     if (device == null) {
-      console.log("No Camera")
+      // console.log("No Camera")
     }
 
     const turnOffCamera = useCallback(()=>{
@@ -222,7 +222,7 @@ const CameraOverlay=withTheme(({theme , camera ,setFile, turnOffCamera}:OverlayP
           turnOffCamera();
         })
         .catch(() => {
-          console.log('error');
+          // console.log('error');
         });
     }, [camera]);
     return (

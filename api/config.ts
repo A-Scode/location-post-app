@@ -31,7 +31,7 @@ api.interceptors.request.use((config:InternalAxiosRequestConfig<any>)=>{
 })
 
 api.interceptors.response.use((response:AxiosResponse)=>{
-    console.log("response" , response)
+    // console.log("response" , response)
     if (response.status !== 200) {
         Toast.show(response.data.message ,{type : "danger" , animationType:"slide-in"  , duration:5000})
     }
