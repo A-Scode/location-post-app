@@ -3,21 +3,23 @@ import { StackNavigationEventMap, StackNavigationOptions } from "@react-navigati
 import { ReactNode } from "react";
 import { Text } from "react-native-paper";
 import Signup from "../screens/Signup";
+import Login from "../screens/Login";
+import SubmitForm from "../screens/SubmitForm";
 
 type Screens = RouteConfig<ParamListBase, string, StackNavigationState<ParamListBase>, StackNavigationOptions, StackNavigationEventMap> ;
 
 const screens:Screens[]=[
     {
-        name:"SignUp",
-        children: ()=><Signup/>,
+        name:"Submit From",
+        children: ()=><SubmitForm/>,
     },
     {
         name:"Login",
-        children: ()=><Text>Login</Text>,
+        children: ()=><Login/>,
     },
     {
-        name:"SubmitFrom",
-        children: ()=><Text>SubmitFrom</Text>,
+        name:"SignUp",
+        children: ()=><Signup/>,
     },
     {
         name:"Retrieve",

@@ -45,7 +45,8 @@ export const LightTheme:CustomTheme = {
     "onSurfaceDisabled": "rgba(32, 26, 25, 0.38)",
     "backdrop": "rgba(59, 45, 44, 0.4)",
     "red" : "#ec3242",
-  }
+  },
+  roundness : 10,
 }
 
 export const DarkTheme:CustomTheme = {
@@ -92,5 +93,6 @@ export const DarkTheme:CustomTheme = {
       "onSurfaceDisabled": "rgba(237, 224, 222, 0.38)",
       "backdrop": "rgba(59, 45, 44, 0.4)",
       "red" : "#ec3242",
-    }
+    },
+    roundness : 10,
   }

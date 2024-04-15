@@ -2,14 +2,17 @@ import Layout from '../components/Layout'
 import { Button, Surface, Text, TextInput, withTheme } from 'react-native-paper';
 import { AnyStyle, PropsWithTheme, styleProps } from '../config/Types';
 import { View } from 'react-native';
+import { useContext } from 'react';
+import { LoginContext } from '../context/LoginContext';
 
-const Signup = ({theme}:PropsWithTheme) => {
+const Login = ({theme}:PropsWithTheme) => {
     const styles = createStyles({theme})
+    const login = useContext(LoginContext)
 
   return (
     <Layout style={styles.layout}>
       <Text style={styles.heading} variant="displayMedium">
-        SignUp
+        Login
       </Text>
       <Surface elevation={4} style={styles.form}>
         <View style={styles.field}>
@@ -18,14 +21,6 @@ const Signup = ({theme}:PropsWithTheme) => {
             mode="outlined"
             textContentType="emailAddress"
             placeholder="Email"
-          />
-        </View>
-        <View style={styles.field}>
-            <Text variant='titleMedium'>Name</Text>
-          <TextInput
-            mode="outlined"
-            textContentType="name"
-            placeholder="Name"
           />
         </View>
         <View style={styles.field}>
@@ -44,7 +39,7 @@ const Signup = ({theme}:PropsWithTheme) => {
   );
 }
 
-export default withTheme(Signup)
+export default withTheme(Login)
 
 const createStyles = ({theme}:styleProps):AnyStyle=>({
     heading : {

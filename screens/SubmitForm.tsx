@@ -1,40 +1,46 @@
 import Layout from '../components/Layout'
-import { Button, Surface, Text, TextInput, withTheme } from 'react-native-paper';
+import { Button, IconButton, Surface, Text, TextInput, withTheme } from 'react-native-paper';
 import { AnyStyle, PropsWithTheme, styleProps } from '../config/Types';
 import { View } from 'react-native';
+import { useCallback } from 'react';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
-const Signup = ({theme}:PropsWithTheme) => {
+const SubmitFrom = ({theme}:PropsWithTheme) => {
     const styles = createStyles({theme})
+
+    const takePictureInput= useCallback(()=>{
+      launchCamera({
+        cameraType :"back",
+        mediaType :"photo",
+        presentationStyle :"currentContext"
+      })
+    },[])
 
   return (
     <Layout style={styles.layout}>
       <Text style={styles.heading} variant="displayMedium">
-        SignUp
+        Submit From
       </Text>
       <Surface elevation={4} style={styles.form}>
         <View style={styles.field}>
-            <Text variant='titleMedium'>Email</Text>
+            <Text variant='titleMedium'>Longitude</Text>
           <TextInput
             mode="outlined"
-            textContentType="emailAddress"
-            placeholder="Email"
+            textContentType="location"
+            placeholder="Longitude"
           />
         </View>
         <View style={styles.field}>
-            <Text variant='titleMedium'>Name</Text>
+            <Text variant='titleMedium'>Latitude</Text>
           <TextInput
             mode="outlined"
-            textContentType="name"
-            placeholder="Name"
+            textContentType="location"
+            placeholder="Latitude"
           />
         </View>
         <View style={styles.field}>
-            <Text variant='titleMedium'>Password</Text>
-          <TextInput
-            mode="outlined"
-            textContentType="password"
-            placeholder="Password"
-          />
+            <Text variant='titleMedium'>Take Picture</Text>
+            <IconButton style={styles.button} icon="add-a-photo" onPress={takePictureInput}  size={50}  />
         </View>
         <Button mode="elevated" style={styles.button}>
           Submit
@@ -44,7 +50,7 @@ const Signup = ({theme}:PropsWithTheme) => {
   );
 }
 
-export default withTheme(Signup)
+export default withTheme(SubmitFrom)
 
 const createStyles = ({theme}:styleProps):AnyStyle=>({
     heading : {
