@@ -41,11 +41,13 @@ npm start
 ```
 
 # 📸 ScreenShots 
+<div style="gap:20px;display:flex;flex-wrap:wrap">
+<img style="border-radius:10px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.51 PM.jpeg" />
+<img style="border-radius:10px" width="30%" src="screenshot/WhatsApp Image 2024-04-16 at 9.41.41 PM.jpeg" />
+<img style="border-radius:10px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.50 PM (2).jpeg" />
+<img style="border-radius:10px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.50 PM (1).jpeg" />
+<img style="border-radius:10px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.50 PM.jpeg" />
+<img style="border-radius:10px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.49 PM.jpeg" />
+<img style="border-radius:10px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.49 PM (1).jpeg" />
 
-<img style="border-radius:10px;margin:5px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.51 PM.jpeg" />
-<img style="border-radius:10px;margin:5px" width="30%" src="screenshot/WhatsApp Image 2024-04-16 at 9.41.41 PM.jpeg" />
-<img style="border-radius:10px;margin:5px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.50 PM (2).jpeg" />
-<img style="border-radius:10px;margin:5px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.50 PM (1).jpeg" />
-<img style="border-radius:10px;margin:5px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.50 PM.jpeg" />
-<img style="border-radius:10px;margin:5px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.49 PM.jpeg" />
-<img style="border-radius:10px;margin:5px" width="30%" src="screenshot/WhatsApp Image 2024-04-15 at 11.38.49 PM (1).jpeg" />
+</div>
