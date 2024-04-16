@@ -1,19 +1,18 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
 import api from "./config"
-import { LoginContext } from "../context/LoginContext"
 import { useContext } from "react"
-import { useToast } from "react-native-toast-notifications"
-import { SubmitFromData } from "../screens/SubmitForm"
+import { LoginContext } from "../context/LoginContext"
 
 export const useRetrieveData = ()=>{
-    const toast = useToast()
+    const login = useContext(LoginContext)
     const query = useQuery( {
         queryKey : ['data'],
-        queryFn : ()=>{
-            return api.get("/data").then(data=>{
-                return data
-            })
-        }
+        queryFn : ()=> api.get("/data" ,{
+            method : 'GET',
+            headers:{
+                Authorization : login.token
+            }
+        } )
     })
 
     return query

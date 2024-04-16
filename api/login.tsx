@@ -14,6 +14,7 @@ export const useLogIn = ()=>{
             return api.post("/auth/user/login" , data)
         },
         onSuccess : (data )=>{
+            // console.log("show"  , data.data)
             toast.show(data.data?.message , {type : "success"})
             loginContext.login({name : data.data?.name , token : data.data?.token})
             

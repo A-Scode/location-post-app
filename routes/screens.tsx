@@ -9,6 +9,8 @@ import RetrieveData from "../screens/RetrieveData";
 
 type Screens = RouteConfig<ParamListBase, string, StackNavigationState<ParamListBase>, StackNavigationOptions, StackNavigationEventMap> ;
 
+
+
 const screens:Screens[]=[
     {
         name:"SignUp",
@@ -17,6 +19,7 @@ const screens:Screens[]=[
     {
         name:"Login",
         children: ()=><Login/>,
+ 
     },
     {
         name:"Submit From",
@@ -24,7 +27,7 @@ const screens:Screens[]=[
     },
     {
         name:"Retrieve",
-        children: ()=><RetrieveData />,
+        children: ()=><RetrieveData/>,
     },
 ];
 

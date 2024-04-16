@@ -36,8 +36,13 @@ const Login = ({theme}:PropsWithTheme) => {
       else if (query.status == "error") {
         reset()
       }
-    } , [query.status , reset])
+    } , [query.isSuccess , reset])
 
+    const login = useContext(LoginContext)
+
+    useEffect(()=>{
+      login.login({name:"", token:""})
+    },[])
 
     const onSubmit = useCallback((values:LoginData)=> {
       query.mutate(values)
@@ -108,7 +113,7 @@ const Login = ({theme}:PropsWithTheme) => {
         <Divider />
 
         <Chip
-          onPress={() => naviagtion.navigate('Login')}
+          onPress={() => naviagtion.navigate('SignUp')}
           icon="person"
           mode="outlined"
           style={styles.signupChip}

@@ -6,17 +6,6 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-import { IconButton } from 'react-native-paper';
 
 import PaperProviderConfig from './config/PaperProviderConfig';
 import NaviagtionScreens from './routes';
@@ -36,7 +25,7 @@ function App(): React.JSX.Element {
         <ToastContextProvider>
           <LoginContextProvider>
             <PaperProviderConfig>
-              <NaviagtionScreens />
+              <NaviagtionScreens/>
             </PaperProviderConfig>
           </LoginContextProvider>
         </ToastContextProvider>

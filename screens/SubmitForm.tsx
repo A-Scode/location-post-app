@@ -27,19 +27,20 @@ const SubmitFrom = ({theme}:PropsWithTheme) => {
     const camera = useRef<Camera>(null);
 
     const device = useCameraDevice('back');
-  
+    
     const navigation = useNavigation<StackNavigationProp<any>>();
-
+    
+    if (device== null ) {
+      return (<Layout>
+        No Camera Available
+      </Layout>)
+    }
     const query = useSubmitFrom();
 
     const format = useCameraFormat(device , [
-      {photoResolution : {width:10,height:30}},
+      {photoResolution : {width:1000,height:3000}},
       {photoAspectRatio : 1 / 3}
     ])
-
-    if (device == null) {
-      // console.log("No Camera")
-    }
 
     const turnOffCamera = useCallback(()=>{
       setOpenCamera(false);
@@ -74,25 +75,33 @@ const SubmitFrom = ({theme}:PropsWithTheme) => {
     });
     const photo = watch('file')
 
-    const onSubmit = useCallback((values:SubmitFromData)=> {
+    const onSubmit = useCallback(async (values:SubmitFromData)=> {
       const formData = new FormData()
 
-      const filePath = photo.path || '';
+      const filePath = `${photo?.path}`;
+      const result = (await fetch(`file://${filePath}`))
+      const data = await result.blob()
+      const photofile =  new File( [data] , "image.jpg")
 
       formData.append("longitude" , values.longitude)
       formData.append("latitude" , values.latitude)
       formData.append("file" , {
-        uri:`file://${filePath}`,
-        name :  'image',
-        type : 'image/jpeg',
+        uri :   `file://${filePath}`,
+        name : filePath.split('/').pop(),
+        type : "image/jpeg",
       })
 
       query.mutate(formData)
     },[photo])
 
-    useEffect(()=>reset() , [])
+    // useEffect(()=>reset() , [])
+    useEffect(()=>{
+      // if (query.isError) console.error("error",query.error.data)
+    } , [query])
 
-
+    useEffect(()=>{
+      if(query.status ==="success") reset();
+    } , [query.isSuccess])
 
   return (
     <>
@@ -195,7 +204,7 @@ const SubmitFrom = ({theme}:PropsWithTheme) => {
           <Button
             mode="outlined"
             onPress={() => navigation.navigate('Retrieve')}
-            style={styles.button}>
+            style={[styles.button , {marginVertical:20}]}>
             Retrieve Data
           </Button>
         </Layout>

@@ -32,6 +32,7 @@ const NaviagtionScreens = ({theme}:PropsWithTheme) => {
         headerStyle : {
             backgroundColor : theme.colors.red,
         },
+        animationEnabled : true,
       }
 
   return (

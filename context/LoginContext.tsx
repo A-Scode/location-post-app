@@ -24,7 +24,7 @@ const LoginContextProvider= ({children} : PropsWithChildren)=>{
     })
 
     useEffect(()=>{
-        console.info(loginDetails)
+    //     console.info(loginDetails)
     } , [loginDetails])
 
     

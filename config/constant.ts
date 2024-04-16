@@ -1,1 +1,1 @@
-export const BASE_URl = "https://test.webyaparsolutions.com/"
+export const BASE_URl = "https://test.webyaparsolutions.com"

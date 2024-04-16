@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse } from "axios";
 import { BASE_URl } from "../config/constant";
 import { storage } from "../App";
 import { Toast } from "react-native-toast-notifications";
@@ -10,15 +10,14 @@ const axiosConfig:AxiosRequestConfig = {
 
 const api = axios.create(axiosConfig)
 
-api.interceptors.request.use((config:InternalAxiosRequestConfig<any>)=>{
-    let  newConfig:InternalAxiosRequestConfig<any> = config ;
-    storage.getItem("token").then(value=>{
-        
+api.interceptors.request.use((config:AxiosRequestConfig<any>)=>{
+    let  newConfig:AxiosRequestConfig<any> = config ;
+    storage.getItem("token").then((value)=>{
         
         // @ts-ignore
         let headers:AxiosRequestHeaders ={
             ...config.headers,
-            Authorization : `Bearer ${value}`,
+            Authorization : `${value}`,
         }
         
         if (value){

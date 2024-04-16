@@ -38,7 +38,7 @@ const Signup = ({theme}:PropsWithTheme) => {
       else if (query.status == "error") {
         reset()
       }
-    } , [query.status , reset])
+    } , [query.isSuccess , reset])
 
 
     const onSubmit = useCallback((values:SignupData)=> {

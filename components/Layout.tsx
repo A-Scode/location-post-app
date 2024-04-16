@@ -3,6 +3,7 @@ import { FlexStyle, ProgressBarAndroidComponent, TextStyle, View, ViewStyle, } f
 import { withTheme } from 'react-native-paper'
 import { AnyStyle, CustomTheme, styleProps } from '../config/Types'
 import { Style } from 'react-native-paper/lib/typescript/components/List/utils'
+import { ScrollView } from 'react-native-gesture-handler'
 
 type propsType = {
     loading? : boolean,
@@ -15,9 +16,9 @@ type propsType = {
 const Layout = ({loading = false , theme , children , style} : propsType) => {
     const styles = createStyles({theme})
   return (
-    <View style= {[styles.container , {...style}]}>
+    <ScrollView style= {[styles.container , {...style}]}>
         {children}
-    </View>
+    </ScrollView>
   )
 }
 
