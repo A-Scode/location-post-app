@@ -1,13 +1,15 @@
 import Layout from '../components/Layout'
 import { Button, Card, Divider, Icon, IconButton, Surface, Text, TextInput, withTheme } from 'react-native-paper';
 import { AnyStyle, CustomTheme, PropsWithTheme, styleProps } from '../config/Types';
-import { View, useWindowDimensions } from 'react-native';
+import { PermissionsAndroid, View, useWindowDimensions } from 'react-native';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Camera, CameraDevice, CameraProps, PhotoFile, useCameraDevice, useCameraFormat, useCameraPermission } from 'react-native-vision-camera';
 import { Controller, FieldValues, UseFormSetValue, useForm } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useSubmitFrom } from '../api/submitform';
+import Geolocation from 'react-native-geolocation-service';
+
 
 
 export interface SubmitFromData extends FieldValues {
@@ -15,6 +17,32 @@ export interface SubmitFromData extends FieldValues {
   latitude : string,
   file : PhotoFile|null,
 }
+
+
+const requestLocationPermission = async() => {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        title: 'Geolocation Permission',
+        message: 'Can we access your location?',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
+      },
+    );
+    console.log('granted', granted);
+    if (granted === 'granted') {
+      // console.log('You can use Geolocation');
+      return true;
+    } else {
+      // console.log('You cannot use Geolocation');
+      return false;
+    }
+  } catch (err) {
+    return false;
+  }
+};
 
 
 const SubmitFrom = ({theme}:PropsWithTheme) => {
@@ -102,6 +130,47 @@ const SubmitFrom = ({theme}:PropsWithTheme) => {
     useEffect(()=>{
       if(query.status ==="success") reset();
     } , [query.isSuccess])
+
+    const [location, setLocation] = useState<Geolocation.GeoPosition|boolean>();
+  // function to check permissions and get Location
+  const getLocation = () => {
+    const result = requestLocationPermission();
+    result.then(res => {
+      console.log('res is:', res);
+      if (res) {
+        Geolocation.getCurrentPosition(
+          position => {
+            console.log(position);
+            setLocation(position);
+          },
+          error => {
+            // See error code charts below.
+            console.log(error.code, error.message);
+            setLocation(false);
+          },
+          {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+        );
+      }
+    });
+    console.log(location);
+  };
+
+
+    useEffect(()=>{
+      getLocation();
+    } , [])
+    
+
+    useEffect(()=>{
+      // console.log(location)
+      if (location!= undefined &&  location!= false){
+        //@ts-expect-error
+        setValue("longitude" , `${location.coords.longitude}`)
+        //@ts-expect-error
+        setValue("latitude" , `${location.coords.latitude}`)
+    }
+
+    } , [location , setValue])
 
   return (
     <>
