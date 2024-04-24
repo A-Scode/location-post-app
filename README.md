@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="screenshot/webyaparfull.png" alt="WebYapper Logo" width="200" />
+  <img src="screenshot/location_post.png" alt="Location post Logo" width="200" />
 </p>
 
-# 📱 WebYapper
+# 📱 Location post
 
-WebYapper is a mobile application built with React Native that allows users to [briefly describe the main functionality or purpose of the app].
+Location post is a mobile application built with React Native that allows users to [briefly describe the main functionality or purpose of the app].
 
 ## 🚀 Features
 
@@ -28,10 +28,10 @@ To run the app locally, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/WebYapper.git
+git clone https://github.com/A-Scode/location-post-app.git
 
 # Navigate to the project directory
-cd WebYapper
+cd location-post-app
 
 # Install dependencies
 npm install
